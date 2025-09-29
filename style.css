@@ -1,0 +1,198 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+#envelope {
+  position: relative;
+  height: 180px;
+  width: 280px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40%;
+  background-color: #ff2a22;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#envelope:hover { cursor: pointer; }
+
+.envelope-wrapper {
+  opacity: 0; /* скрито в началото */
+  animation: fadeInWrapper 2s ease forwards; /* анимация при зареждане */
+}
+
+@keyframes fadeInWrapper {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-top: 98px solid #ff2a22;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  transform-origin: top;
+}
+
+.pocket {
+  border-left: 140px solid #ff748d;
+  border-right: 140px solid #ff748d;
+  border-bottom: 90px solid #ff98a7;
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: white;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  border-radius: 10px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(0);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 1s ease;
+}
+
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 14%;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+.line1 { top: 15%; }
+.line2 { top: 30%; }
+.line3 { top: 50%; text-align: center; }
+.line4 { top: 65%; text-align: center; }
+
+.open .flap {
+  transform: rotatex(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 1;
+}
+
+.close .flap {
+  transform: rotatex(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.open .letter {
+  transform: translateY(-120px);
+  opacity: 1;
+  z-index: 2;
+}
+
+.close .letter {
+  transform: translateY(0);
+  opacity: 0;
+  z-index: 1;
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+}
+
+.heart:before, .heart:after {
+  position: absolute;
+  content: "";
+  background: #d00000;
+  width: 40px;
+  height: 64px;
+  left: 40px;
+  top: 0;
+  border-radius: 40px 40px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  animation: none;
+}
+
+/* Повече сърчица */
+.a1 { left: 20%; transform: scale(0.6); animation: floatUp 5s linear infinite; }
+.a2 { left: 55%; transform: scale(1); animation: floatUp 6s linear infinite; }
+.a3 { left: 10%; transform: scale(0.8); animation: floatUp 7s linear infinite; }
+.a4 { left: 70%; transform: scale(0.5); animation: floatUp 5.5s linear infinite; }
+.a5 { left: 35%; transform: scale(0.9); animation: floatUp 6.5s linear infinite; }
+.a6 { left: 80%; transform: scale(0.7); animation: floatUp 7.5s linear infinite; }
+
+@keyframes floatUp {
+  0% { top: 0; opacity: 1; }
+  100% { top: -600px; opacity: 0; }
+}
+
+.reset { text-align: center; }
+
+.reset button {
+  font-weight: 800;
+  background-color: transparent;
+  border: solid 2px #FF6863;
+  border-radius: 4px;
+  color: #FF6863;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 20px;
+  margin-top: 110px;
+  padding: 10px;
+  min-width: 150px;
+  outline: none;
+  cursor: pointer;
+}
+
+.reset button:hover {
+  background-color: #FF6863;
+  color: white;
+}
+
+.valentine {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color:rgb(20, 20, 20);
+  font-size: 30px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <title>❤️За Маги❤️</title>
+
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="envelope-wrapper">
+            <div id="envelope" class="close">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                   <p class="words line1">Любовче картофче,</p>
+					<p class="words line2">Искам да знаеш колко много те обичам и винаги ще бъдеш МОЯ!</p>
+					<p class="words line3">&nbsp;</p> <!-- празен ред -->
+					<p class="words line4"><b>ОБИЧАМ ТЕ!❤️❤️❤️</b></p>
+
+
+                </div>
+                <div class="hearts">
+                    <div class="heart a1"></div>
+                    <div class="heart a2"></div>
+                    <div class="heart a3"></div>
+					<div class="heart a4"></div>
+					<div class="heart a5"></div>
+					<div class="heart a6"></div>
+                </div>
+            </div>
+        </div>
+		
+        <div class="reset">
+            <button id="open">Open</button>
+        </div>
+
+        <!-- 🎵 Background Music -->
+        <audio id="bg-music" loop>
+          <source src="those_eyes.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Script JS -->
+        <script src="./script.js"></script>
+
+       <script>
+  const music = document.getElementById("bg-music");
+  const openBtn = document.getElementById("open");
+  const closeBtn = document.getElementById("reset");
+  const envelope = document.getElementById("envelope");
+
+  openBtn.addEventListener("click", () => {
+    envelope.classList.remove("close");
+    envelope.classList.add("open");
+
+    music.volume = 0;           // започва тихо
+    music.currentTime = 105;    // започва от 1:50
+    music.play();
+
+    // fade in (от 0 до 0.5 за ~5 секунди)
+    let fade = setInterval(() => {
+      if (music.volume < 0.5) {
+        music.volume = Math.min(music.volume + 0.01, 0.5);
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  });
+
+  closeBtn.addEventListener("click", () => {
+    envelope.classList.remove("open");
+    envelope.classList.add("close");
+    music.pause();
+    music.currentTime = 110; // ресет пак на 1:50
+  });
+</script>
+    </body>
+</html>
